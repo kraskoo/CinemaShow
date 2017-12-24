@@ -1,0 +1,64 @@
+﻿@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+<div class="inner-main">
+    <div class="row">
+        <div class="col-md-6 col-md-push-3">
+            <section id="login-form">
+                @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-vertical", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                    </div>
+
+                    @Html.ValidationMessageFor(m => m.Email, string.Empty, new { @class = "text-danger" })
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Password, string.Empty, new { @class = "text-danger" })
+                    <div class="input-group">
+                        <div class="checkbox">
+                            <label class="checkbox-inline">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                Remember Me?
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input type="submit" value="Вход" class="btn btn-default" />
+                    </div>
+                    @*<br />
+                        <p>
+                            <a href="@Url.Action("Register", "Account")">Register as a new user</a>
+                        </p>*@
+                    @* Enable this once you have account confirmation enabled for password reset functionality
+                        <p>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>*@
+                }
+            </section>
+        </div>
+        @*<div class="col-md-4">
+                <section id="socialLoginForm">
+                    @if (!this.Model.AuthenticationDescriptions.Any())
+                    {
+                        <div>
+                            <p>
+                                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                                for details on setting up this ASP.NET application to support logging in via external services.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl, AuthenticationDescriptions = Model.AuthenticationDescriptions })
+                    }
+                </section>
+            </div>*@
+    </div>
+</div>

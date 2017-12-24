@@ -1,0 +1,104 @@
+﻿div.caption > dl.dl-horizontal > dt {
+    text-align: left;
+    width: 86px;
+}
+
+div.caption > dl.dl-horizontal > dd {
+    margin-left: 0;
+    display: inline;
+}
+
+.navbar-default,
+.navbar-default .navbar-nav .open > a,
+.navbar-default .navbar-nav .open > a:focus,
+.navbar-default .navbar-nav .open > a:hover,
+#navbar > ul > li > ul.dropdown-menu > li > a,
+.navbar-button,
+.dropdown-menu {
+    background-color: #4CAF50 !important;
+    color: white;
+}
+
+    #navbar > ul > li > ul.dropdown-menu > li > a:hover,
+    .navbar-button:hover {
+        background-color: #4CAF92 !important;
+    }
+
+    .navbar-default .navbar-nav > li > a,
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-brand,
+    .navbar-default .navbar-brand:hover,
+    .navbar-default .navbar-toggle .icon-bar,
+    #navbar > div > div > ul > li > a:hover,
+    #navbar > div > div > ul > li > a:focus,
+    .navbar-nav .navbar-left > li > a:hover,
+    .navbar-nav .navbar-left > li > a:focus,
+    .navbar-default .navbar-brand:focus,
+    .navbar-default .navbar-brand:hover {
+        color: white !important;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: white !important;
+    }
+
+    .navbar-default .navbar-toggle:focus,
+    .navbar-default .navbar-toggle:hover {
+        background-color: transparent !important;
+    }
+
+div.navbar-header > button > img {
+    max-width: 14px;
+    display: block;
+}
+
+div > div.navbar-header > button:nth-child(1), div > div.navbar-header > button:nth-child(2) {
+    margin: 8px 15px;
+    padding: 9px 10px;
+}
+
+div > div.navbar-header > button:nth-child(1) {
+    float: left;
+}
+
+div > div.navbar-header > button:nth-child(2) {
+    float: right;
+}
+
+#search-addon {
+    top: 0;
+}
+
+#search-row {
+    max-width: 200px;
+    padding-top: 8px;
+}
+
+@media (max-width: 991px) {
+    main > div:nth-child(3n+0), main > div:nth-child(3n+4) {
+        float: right;
+    }
+}
+
+@media (max-width: 767px) {
+    #search-row {
+        max-width: 100%;
+    }
+
+    main > div:nth-child(3n+0), main > div:nth-child(3n+4) {
+        float: none;
+    }
+}
+
+.navbar-button {
+    border: none;
+    text-align: left;
+    display: block;
+    width: 100%;
+    padding: 3px 20px;
+    margin: 0;
+}
+
+.text-bold {
+    font-weight: bold;
+}

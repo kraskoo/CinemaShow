@@ -1,0 +1,64 @@
+﻿@model NewMovieViewModel
+@{
+    ViewBag.Title = "Add";
+}
+<div class="container-fluid">
+    @using (Html.BeginForm("Add", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Title)
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description)
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.YoutubeUrl)
+                    @Html.TextBoxFor(m => m.YoutubeUrl, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Price)
+                    @Html.TextBoxFor(m => m.Price, new { @class = "form-control", type = "number", min = 0.01, step = "any" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="input-img-files">File input</label>
+                    <input type="file" id="input-img-files" accept=".jpg, .png" name="Image" />
+                    <p class="help-block">Choose one image file to attach to this movie</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <input id="new-cat-field" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button id="new-cat" type="button" class="btn btn-default">New Category</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <select id="selection" class="form-control" size="5" multiple name="Categories"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button id="move-cat" type="button" class="btn btn-default"><<</button>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <select id="categories" class="form-control" size="5" multiple></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <input type="submit" id="submit" value="Add" class="btn btn-default" />
+    }
+</div>
+<script type="text/javascript" src="/resources/scripts/addNewMovieHandler.js"></script>

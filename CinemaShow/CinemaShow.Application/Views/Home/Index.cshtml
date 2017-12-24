@@ -1,0 +1,31 @@
+﻿@model Movie[]
+@{
+    ViewBag.Title = "Index";
+}
+
+@for (int i = 0; i < Model.Length; i++)
+{
+<div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="thumbnail">
+        <img src="@Model[i].Image.Url.Substring(@Model[i].Image.Url.IndexOf("/public"))" alt="@Model[i].Title">
+    </div>
+    <div class="caption">
+        <h4 class="text-center">@Model[i].Title</h4>
+        <dl class="dl-horizontal">
+            <dt>Category:</dt>
+            <dd>@string.Join(", ", Model[i].Categories.Select(c => c.Name).OrderBy(x => x))</dd>
+            <dt>Description:</dt>
+            <dd>@string.Join(string.Empty, Model[i].Description.Take(200))...</dd>
+            <dt>Price:</dt>
+            <dd>$@Model[i].Price</dd>
+        </dl>
+        <p>
+            <a href="@Url.Action("MovieInfo", "Home", new { id = Model[i].Id })" class="btn btn-sm btn-default" role="button">Info</a>
+        </p>
+    </div>
+</div>
+}
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <ul id="pages" class="pagination"></ul>
+</div>
+<script type="text/javascript" src="/resources/scripts/paginationHandler.js"></script>

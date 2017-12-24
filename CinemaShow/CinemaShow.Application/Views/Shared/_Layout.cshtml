@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @Html.Partial("_MetaTags")
+    <title>CinemaShow - @ViewBag.Title</title>
+    @Html.Partial("_HeadLinks")
+</head>
+<body>
+    <div class="container">
+        @Html.Partial("_Navbar")
+        <main class="container-fluid">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>
