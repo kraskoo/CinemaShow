@@ -2,9 +2,11 @@
 {
     using System.Web;
     using System.Web.Mvc;
+
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
+
     using Data;
     using Services;
 
@@ -12,7 +14,7 @@
     {
         private SignInManager signInManager;
         private UserManager userManager;
-        private CinemaShowContext dbContext;
+        private CinemaShowContext dataContext;
 
         protected BaseController()
         {
@@ -25,7 +27,7 @@
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
-            this.dbContext = context;
+            this.dataContext = context;
         }
 
         public IAuthenticationManager AuthenticationManager =>
@@ -33,10 +35,11 @@
 
         public CinemaShowContext CinemaShowDbContext
         {
-            get => this.dbContext ?? this.HttpContext
+            get => this.dataContext ?? this.HttpContext
                 .GetOwinContext()
                 .Get<CinemaShowContext>();
-            private set => this.dbContext = value;
+
+            private set => this.dataContext = value;
         }
 
         public UserManager UserManager
@@ -44,6 +47,7 @@
             get => this.userManager ?? this.HttpContext
                 .GetOwinContext()
                 .Get<UserManager>();
+
             private set => this.userManager = value;
         }
 
@@ -52,6 +56,7 @@
             get => this.signInManager ?? this.HttpContext
                 .GetOwinContext()
                 .Get<SignInManager>();
+
             private set => this.signInManager = value;
         }
 
@@ -59,7 +64,7 @@
         {
             foreach (var error in result.Errors)
             {
-                this.ModelState.AddModelError("", error);
+                this.ModelState.AddModelError(string.Empty, error);
             }
         }
 

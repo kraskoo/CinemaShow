@@ -143,10 +143,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="curtain.ico" />
-    <Content Include="public\images\matrix.jpg" />
-    <Content Include="public\images\matrix_reloaded.jpg" />
-    <Content Include="public\images\matrix_revolutions.jpg" />
-    <Content Include="public\images\Terminator_Genisys.jpg" />
+    <Content Include="public\images\241217\103617476.jpg" />
+    <Content Include="public\images\241217\103937481.jpg" />
+    <Content Include="public\images\241217\104338348.jpg" />
+    <Content Include="public\images\241217\10452353.jpg" />
+    <Content Include="public\images\241217\104703557.jpg" />
+    <Content Include="public\images\241217\112302374.jpg" />
+    <Content Include="public\images\241217\174611763.jpg" />
+    <Content Include="public\images\241217\175228652.jpg" />
+    <Content Include="public\images\241217\175754604.jpg" />
+    <Content Include="public\images\241217\180028609.jpg" />
+    <Content Include="public\images\241217\192902263.jpg" />
+    <Content Include="public\images\241217\34023219.jpg" />
+    <Content Include="public\images\241217\34357645.jpg" />
+    <Content Include="public\images\241217\34542890.jpg" />
+    <Content Include="public\images\241217\34951627.jpg" />
+    <Content Include="public\images\241217\41547200.jpg" />
+    <Content Include="public\images\241217\41719747.jpg" />
+    <Content Include="public\images\251217\10049 PM581.jpg" />
+    <Content Include="public\images\251217\10115 PM819.jpg" />
+    <Content Include="public\images\251217\10551 PM496.jpg" />
+    <Content Include="public\images\251217\10856 PM753.jpg" />
+    <Content Include="public\images\251217\11509 PM18.jpg" />
+    <Content Include="public\images\251217\11940 PM428.jpg" />
+    <Content Include="public\images\251217\125015 PM785.jpg" />
+    <Content Include="public\images\251217\12505 PM313.jpg" />
+    <Content Include="public\images\251217\125502 PM975.jpg" />
+    <Content Include="public\images\251217\13009 PM626.jpg" />
     <Content Include="resources\bootstrap\css\bootstrap-theme.css" />
     <Content Include="resources\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="resources\bootstrap\css\bootstrap.css" />
@@ -162,6 +185,7 @@
     <Content Include="resources\bootstrap\css\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="resources\css\style.css" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="resources\jquery\jquery-3.2.1.intellisense.js" />
     <Content Include="resources\bootstrap\js\bootstrap.js" />
     <Content Include="resources\bootstrap\js\bootstrap.min.js" />
@@ -185,7 +209,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Movie\Add.cshtml" />
-    <Content Include="Views\Home\MovieInfo.cshtml" />
+    <Content Include="Views\Movie\MovieInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -212,6 +236,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CinemaShow.Common\CinemaShow.Common.csproj">
+      <Project>{8b12d899-c279-4daf-943d-28073f45b5ed}</Project>
+      <Name>CinemaShow.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CinemaShow.Data\CinemaShow.Data.csproj">
       <Project>{4364E860-2253-4AEA-B18F-D7597EE9FFC7}</Project>
       <Name>CinemaShow.Data</Name>

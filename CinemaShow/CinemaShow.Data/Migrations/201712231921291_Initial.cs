@@ -119,8 +119,7 @@ namespace CinemaShow.Data.Migrations
                 .ForeignKey("dbo.Movies", t => t.MovieId, cascadeDelete: true)
                 .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.MovieId)
-                .Index(t => t.CategoryId);
-            
+                .Index(t => t.CategoryId);            
         }
         
         public override void Down()

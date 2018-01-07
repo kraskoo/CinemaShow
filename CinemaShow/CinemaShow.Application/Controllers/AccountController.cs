@@ -3,9 +3,11 @@
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Mvc;
+
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
+
     using Data;
     using Models;
     using Models.ViewModels.Account;
@@ -55,6 +57,7 @@
                 {
                     this.UserManager.AddToRole(user.Id, role);
                     await this.SignInManager.SignInAsync(user, false, false);
+                    
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -97,7 +100,7 @@
         {
             if (string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.Password))
             {
-                this.ModelState.AddModelError(string.Empty, @"Невалиден вход.");
+                this.ModelState.AddModelError(string.Empty, @"Invalid input");
                 return this.View(model);
             }
 
@@ -105,7 +108,7 @@
             var userByEmail = this.UserManager.FindByEmail(model.Email);
             if (userByEmail == null)
             {
-                this.ModelState.AddModelError(string.Empty, @"Невалиден вход.");
+                this.ModelState.AddModelError(string.Empty, @"Invalid input");
                 return this.View(model);
             }
 
@@ -132,7 +135,7 @@
                         });
                 case SignInStatus.Failure:
                 default:
-                    this.ModelState.AddModelError(string.Empty, @"Невалиден вход.");
+                    this.ModelState.AddModelError(string.Empty, @"Invalid input");
                     return this.View(model);
             }
         }

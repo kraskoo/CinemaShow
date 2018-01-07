@@ -1,7 +1,9 @@
 ﻿namespace CinemaShow.Data
 {
     using System.Data.Entity;
+
     using Microsoft.AspNet.Identity.EntityFramework;
+
     using Models;
 
     public class CinemaShowContext : IdentityDbContext<User>
@@ -17,6 +19,11 @@
         public virtual DbSet<Category> Categories { get; set; }
 
         public virtual DbSet<ImageUrl> ImageUrls { get; set; }
+
+        public static CinemaShowContext Create()
+        {
+            return new CinemaShowContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,11 +43,6 @@
                 .WillCascadeOnDelete(false);
             
             base.OnModelCreating(modelBuilder);
-        }
-
-        public static CinemaShowContext Create()
-        {
-            return new CinemaShowContext();
         }
     }
 }

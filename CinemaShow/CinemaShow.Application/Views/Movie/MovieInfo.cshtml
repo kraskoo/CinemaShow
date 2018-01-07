@@ -1,14 +1,14 @@
 ﻿@model Movie
 @{
     ViewBag.Title = $"{Model.Title} Info";
-    var description = Model.Description.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+    var description = Model.Description.SeparatedFromNewLine();
 }
 
 <h2 class="text-center">@Model.Title</h2>
 <hr />
 <div class="row">
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-push-1">
-        <img id="img-poster" src="@Model.Image.Url.Substring(Model.Image.Url.IndexOf("/public"))" class="img-responsive" style="max-height: 304px;" alt="Image Poster" />
+        <img id="img-poster" src="@Model.Image.Url.FromPublic()" class="img-responsive" style="max-height: 304px;" alt="Image Poster" />
     </div>
     <div id="iframe-panel" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-pull-2">
         <div class="embed-responsive embed-responsive-16by9">
@@ -19,7 +19,7 @@
 <hr />
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <p class="text-center text-bold">@string.Join(", ", Model.Categories.Select(c => c.Name).OrderBy(x => x))</p>
+        <p class="text-center text-bold">@Model.Categories.Select(c => c.Name).OrderBy(x => x).AsString(", ")</p>
         @foreach (var line in description)
         {
             <p>@line</p>

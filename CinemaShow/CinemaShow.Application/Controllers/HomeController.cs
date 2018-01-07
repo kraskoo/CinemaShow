@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Mvc;
+
     using Data;
     using Services;
 
@@ -33,15 +34,6 @@
                             .Take(8)
                             .ToArray();
             return await Task.FromResult<ActionResult>(this.View(movies));
-        }
-
-        public ActionResult MovieInfo(string id)
-        {
-            return this.View(this.CinemaShowDbContext
-                .Movies
-                .Include(m => m.Categories)
-                .Include(m => m.Image)
-                .FirstOrDefault(m => m.Id.ToString() == id));
         }
     }
 }

@@ -6,13 +6,19 @@
 
     public class ServerContentManager
     {
+        private const string Public = "public";
+        private const string Application = "application";
+        private const string Audio = "audio";
+        private const string Image = "image";
+        private const string Pdf = "pdf";
         private readonly string mainServerDirectory;
         private readonly string publicDirectory;
 
         public ServerContentManager()
         {
             this.mainServerDirectory = HttpRuntime.AppDomainAppPath;
-            this.publicDirectory = Path.Combine(this.mainServerDirectory, "public");
+            this.publicDirectory = Path.Combine(this.mainServerDirectory, ServerContentManager.Public);
+            this.CreateDirectoryIfNotExist(this.publicDirectory);
         }
 
         public string UploadFile(HttpPostedFileBase file, DateTime date)
@@ -52,19 +58,19 @@
         {
             var partsOfContentType = contentType.Split('/');
             var comparer = partsOfContentType[0];
-            if (comparer == "application")
+            if (comparer == ServerContentManager.Application)
             {
                 comparer = partsOfContentType[1];
             }
 
             switch (comparer)
             {
-                case "audio":
-                    return Path.Combine(this.publicDirectory, "audio");
-                case "image":
-                    return Path.Combine(this.publicDirectory, "images");
-                case "pdf":
-                    return Path.Combine(this.publicDirectory, "pdf");
+                case ServerContentManager.Audio:
+                    return Path.Combine(this.publicDirectory, ServerContentManager.Audio);
+                case ServerContentManager.Image:
+                    return Path.Combine(this.publicDirectory, $"{ServerContentManager.Image}s");
+                case ServerContentManager.Pdf:
+                    return Path.Combine(this.publicDirectory, ServerContentManager.Pdf);
                 default:
                     return string.Empty;
             }

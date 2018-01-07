@@ -1,10 +1,10 @@
 ﻿namespace CinemaShow.Application.Controllers
 {
     using System;
-    using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
-    using System.Threading.Tasks;
     using System.Web.Mvc;
+
     using Data;
     using Models;
     using Models.ViewModels.Movie;
@@ -26,6 +26,15 @@
         {
         }
 
+        public ActionResult MovieInfo(string id)
+        {
+            return this.View(this.CinemaShowDbContext
+                .Movies
+                .Include(m => m.Categories)
+                .Include(m => m.Image)
+                .FirstOrDefault(m => m.Id.ToString() == id));
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult Add()
         {
@@ -36,9 +45,9 @@
         [Authorize(Roles = "Admin")]
         public ActionResult Add(NewMovieViewModel model)
         {
-            var dbContext = this.CinemaShowDbContext;
+            var data = this.CinemaShowDbContext;
             var contentManager = new ServerContentManager();
-            var categories = dbContext.Categories;
+            var categories = data.Categories;
             var path = contentManager.UploadFile(model.Image, DateTime.Now);
 
             var imageUrl = new ImageUrl
@@ -46,7 +55,7 @@
                 Id = Guid.NewGuid(),
                 Url = path
             };
-            dbContext.ImageUrls.Add(imageUrl);
+            data.ImageUrls.Add(imageUrl);
 
             var movie = new Movie
             {
@@ -64,8 +73,8 @@
                 movie.Categories.Add(currentCategory);
             }
 
-            dbContext.Movies.Add(movie);
-            dbContext.SaveChanges();
+            data.Movies.Add(movie);
+            data.SaveChanges();
             return this.RedirectToAction("Index", "Home");
         }
     }
