@@ -210,6 +210,14 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Movie\Add.cshtml" />
     <Content Include="Views\Movie\MovieInfo.cshtml" />
+    <Content Include="Views\Shared\CustomError.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Errors\NotFound.cshtml" />
+    <Content Include="Views\Errors\MovedPermanently.cshtml" />
+    <Content Include="Views\Errors\MovedTemporary.cshtml" />
+    <Content Include="Views\Errors\BadRequest.cshtml" />
+    <Content Include="Views\Errors\NotAuthorized.cshtml" />
+    <Content Include="Views\Errors\InternalServerError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -222,10 +230,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
